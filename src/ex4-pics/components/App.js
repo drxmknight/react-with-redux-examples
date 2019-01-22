@@ -6,7 +6,7 @@ import ImageList from './ImageList';
 
 class App extends React.Component {
     // Initialize component state.
-    state = { images: [] };
+    state = { images: [], term: '' };
 
     // Callback function to pass values from child to parent component with props.
     onSearchSubmit = async (term) => {
@@ -16,7 +16,7 @@ class App extends React.Component {
         const response = await Mocky.get('/5c4737c53100002d008a1d22');
         console.log(response);
         // Set the state of the component with the fetched data.
-        this.setState({ images: response.data.results });
+        this.setState({ images: response.data.results, term });
     }
 
     /* render method of a class component.
@@ -27,7 +27,7 @@ class App extends React.Component {
         return (
             <div className="ui container">
                 <SearchBar onSearchSubmit={this.onSearchSubmit}></SearchBar>
-                <ImageList images={this.state.images}></ImageList>
+                <ImageList images={this.state.images} term={this.state.term}></ImageList>
             </div>
         );
     }

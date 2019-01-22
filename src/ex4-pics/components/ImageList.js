@@ -10,10 +10,14 @@ const ImageList = (props) => {
         return <ImageCard key={image.id} image={image}></ImageCard>
     });
 
+    const listText = () => {
+        return (props.term === '' ? '' : `Resultado de '${props.term}':`);
+    }
+
     // Return the component to render.
     return (
         <div>
-            <p>Image List:</p>
+            <p>{listText()}</p>
             <div className="image-list">{images}</div>
         </div>
     );
