@@ -1,6 +1,6 @@
 import React from 'react';
-//import Unsplash from '../api/Unsplash';
-import Mocky from '../api/Mocky';
+import Unsplash from '../api/Unsplash';
+//import Mocky from '../api/Mocky';
 import SearchBar from './SearchBar';
 import ImageList from './ImageList';
 
@@ -12,9 +12,8 @@ class App extends React.Component {
     onSearchSubmit = async (term) => {
         // Fetch data from the API.
         // Uncomment unsplash API to use the search bar. Must have a API-KEY.
-        //const response = await Unsplash.get('/search/photos', { params: { query: term } });
-        const response = await Mocky.get('/5c4737c53100002d008a1d22');
-        console.log(response);
+        const response = await Unsplash.get('/search/photos', { params: { query: term } });
+        //const response = await Mocky.get('/5c4737c53100002d008a1d22');
         // Set the state of the component with the fetched data.
         this.setState({ images: response.data.results, term });
     }
